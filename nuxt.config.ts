@@ -56,6 +56,8 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
+    // 页面应用自动过渡效果。
+    // layoutTransition: { name: 'layout', mode: 'out-in' },
   },
 
   pwa,
