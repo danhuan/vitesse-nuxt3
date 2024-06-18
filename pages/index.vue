@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { useLoginQrcodeApi } from '~/apis/user'
+
 const online = useOnline()
+
+const res = await useLoginQrcodeApi()
+console.log(res)
 </script>
 
 <template>
