@@ -87,6 +87,22 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
+  devServer: {
+    port: 3002,
+  },
+  vite: {
+    server: {
+      hmr: {
+        protocol: 'wss',
+        host: '0.0.0.0',
+        port: 24678,
+        // clientPort: 443,
+        path: 'hmr/',
+      },
+    },
+  },
+  ssr: false,
+
   features: {
     // For UnoCSS
     inlineStyles: false,
@@ -97,4 +113,5 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+
 })
