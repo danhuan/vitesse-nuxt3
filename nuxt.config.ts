@@ -41,9 +41,9 @@ export default defineNuxtConfig({
       ignore: ['/hi'],
     },
     // 开发代理配置。
-    // devProxy: {
-    //   '/proxy/example': { target: 'https://example.com', changeOrigin: true },
-    // },
+    devProxy: {
+      [process.env.NUXT_PUBLIC_API_BASE]: { target: 'http://fxh4bs.natappfree.cc', changeOrigin: true },
+    },
   },
   /*
   * 需要在构建后使用环境变量指定的私有或公共令牌。使用方式：

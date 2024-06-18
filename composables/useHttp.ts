@@ -4,14 +4,15 @@ import {
 
 const config = useRuntimeConfig()
 export const fetchConfig = {
-  baseURL: config.public.baseURL,
+  baseURL: config.public.apiBase,
   headers: {
     // appid: 'bd9d01ecc75dbbaaefce',
   },
 }
 
+console.log('config', config)
 // 请求体封装
-function useGetFetchOptions(options = {}) {
+function useGetFetchOptions(options: any = {}) {
   options.baseURL = options.baseURL ?? fetchConfig.baseURL
   // options.headers = options.headers ?? {
   //   appid: fetchConfig.headers.appid,
@@ -30,14 +31,14 @@ function useGetFetchOptions(options = {}) {
 }
 
 // http请求封装
-export async function useHttp(key, url, options = {}) {
+export async function useHttp(key: string, url: string, options: any = {}) {
   options = useGetFetchOptions(options)
   options.key = key
 
   if (options.$) {
     const data = ref(null)
     const error = ref(null)
-    return await $fetch(url, options).then((res) => {
+    return await $fetch(url, options).then((res: any) => {
       data.value = res.data
       return {
         data,
@@ -60,7 +61,7 @@ export async function useHttp(key, url, options = {}) {
   const res = await useFetch(url, {
     ...options,
     // 相当于响应拦截器
-    transform: (res) => {
+    transform: (res: any) => {
       return res.data
     },
   })
@@ -78,13 +79,13 @@ export async function useHttp(key, url, options = {}) {
 }
 
 // GET请求
-export function useHttpGet(key, url, options = {}) {
+export function useHttpGet(key: string, url: string, options: any = {}) {
   options.method = 'GET'
   return useHttp(key, url, options)
 }
 
 // POST请求
-export function useHttpPost(key, url, options = {}) {
+export function useHttpPost(key: string, url: string, options: any = {}) {
   options.method = 'POST'
   return useHttp(key, url, options)
 }
