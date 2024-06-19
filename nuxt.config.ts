@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
+    '@nuxt/image',
   ],
 
   experimental: {
@@ -27,6 +28,8 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  ssr: true,
+
   nitro: {
     // 构建配置。
     esbuild: {
@@ -35,15 +38,16 @@ export default defineNuxtConfig({
       },
     },
     // 预渲染配置。
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/hi'],
-    },
+    // prerender: {
+    //   crawlLinks: false,
+    //   routes: ['/', '/login'],
+    //   ignore: ['/hi'],
+    // },
     // 开发代理配置。
-    devProxy: {
-      [process.env.NUXT_PUBLIC_API_BASE]: { target: 'http://fxh4bs.natappfree.cc', changeOrigin: true },
-    },
+    // devProxy: {
+    //   // eslint-disable-next-line node/prefer-global/process
+    //   [process.env.NUXT_PUBLIC_API_BASE]: { target: 'http://fxh4bs.natappfree.cc', changeOrigin: true },
+    // },
   },
   /*
   * 需要在构建后使用环境变量指定的私有或公共令牌。使用方式：
@@ -55,6 +59,7 @@ export default defineNuxtConfig({
     // apiSecret: process.env.NUXT_API_SECRET, // 秘钥
     // public中的键也可以在客户端使用
     public: {
+      // eslint-disable-next-line node/prefer-global/process
       apiBase: process.env.NUXT_PUBLIC_API_BASE, // 服务器地址
     },
   },
@@ -101,7 +106,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  ssr: false,
 
   features: {
     // For UnoCSS

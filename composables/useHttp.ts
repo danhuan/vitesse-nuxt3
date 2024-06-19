@@ -2,18 +2,11 @@ import {
   createDiscreteApi,
 } from 'naive-ui'
 
-const config = useRuntimeConfig()
-export const fetchConfig = {
-  baseURL: config.public.apiBase,
-  headers: {
-    // appid: 'bd9d01ecc75dbbaaefce',
-  },
-}
-
-console.log('config', config)
 // 请求体封装
 function useGetFetchOptions(options: any = {}) {
-  options.baseURL = options.baseURL ?? fetchConfig.baseURL
+  const runtimeConfig = useRuntimeConfig()
+
+  options.baseURL = options.baseURL ?? runtimeConfig.public.apiBase
   // options.headers = options.headers ?? {
   //   appid: fetchConfig.headers.appid,
   // }
